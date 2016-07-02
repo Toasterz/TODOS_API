@@ -17,7 +17,13 @@ server.use(bodyParser.urlencoded({extended: true}));
 
 server.get('/todos', function(request, response)
 {
-  response.send('GET todos');
+  var todo = {
+    id: uuid.v4(),
+    description: request.body.description,
+    isComplete: false,
+  };
+  var result = db.read('todos');
+  response.send(result);
 });
 
 server.get('/todos/:id', function(request, response)
