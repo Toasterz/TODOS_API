@@ -1,9 +1,3 @@
 {
-  "todos": [
-    {
-      "id": "14ad59ba-b7db-4e8e-842c-9713789f974c",
-      "description": "Drink",
-      "isComplete": false
-    }
-  ]
+  "todos": []
 }
