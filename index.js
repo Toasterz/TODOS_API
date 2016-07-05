@@ -32,7 +32,6 @@ server.get('/todos/:id', function(request, response)
                 .value();
   response.send(todo);
 });
-
 server.post('/todos', function(request, response)
 {
   var todo = {
@@ -49,10 +48,9 @@ server.post('/todos', function(request, response)
 
 server.put('/todos/:id', function(request, response)
 {
-  
   var updatedTodoInfo = {
     description: request.body.description,
-    isComplete: request.body.isComplete
+    isComplete: request.body.isComplete,
   };
   var updatedTodo = db.get('todos')
                       .find({id: request.params.id})
