@@ -49,7 +49,16 @@ server.post('/todos', function(request, response)
 
 server.put('/todos/:id', function(request, response)
 {
-  response.send('PUT todos :id');
+  
+  var updatedTodoInfo = {
+    description: request.body.description,
+    isComplete: request.body.isComplete
+  };
+  var updatedTodo = db.get('todos')
+                      .find({id: request.params.id})
+                      .assign(updatedTodoInfo)
+                      .value();
+  response.send(updatedTodo);
 });
 
 server.delete('/todos/:id', function(request, response)
