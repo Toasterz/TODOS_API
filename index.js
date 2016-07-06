@@ -37,6 +37,7 @@ server.post('/todos', function(request, response)
     description: request.body.description,
     isComplete: false,
   };
+  console.log(todo);
   var result = db.get('todos')
                 .push(todo)
                 .last()
