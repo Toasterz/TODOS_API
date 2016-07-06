@@ -5,14 +5,11 @@ var db = lowdb("db.json");
 var uuid = require("uuid");
 var server = express();
 var port = process.env.PORT || 8080;
-
-
 //database initialization
 db.defaults({todos: []})
   .value();
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
-
 
 server.get('/todos', function(request, response)
 {
@@ -34,6 +31,7 @@ server.get('/todos/:id', function(request, response)
 });
 server.post('/todos', function(request, response)
 {
+  console.log(request.body);
   var todo = {
     id: uuid.v4(),
     description: request.body.description,
