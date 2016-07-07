@@ -5,6 +5,9 @@ var db = lowdb("db.json");
 var uuid = require("uuid");
 var server = express();
 var port = process.env.PORT || 8080;
+var Todo = require('./models/todo.js');
+var testTodo = new Todo('Drone API');
+console.log(testTodo);
 //database initialization
 db.defaults({todos: []})
   .value();
@@ -27,13 +30,7 @@ server.get('/todos/:id', function(request, response)
 });
 server.post('/todos', function(request, response)
 {
-  console.log(request.body);
-  var todo = {
-    id: uuid.v4(),
-    description: request.body.description,
-    isComplete: false,
-  };
-  console.log(todo);
+  var todo = new Todo(request.body.description);
   var result = db.get('todos')
                 .push(todo)
                 .last()
@@ -43,13 +40,11 @@ server.post('/todos', function(request, response)
 
 server.put('/todos/:id', function(request, response)
 {
-  var updatedTodoInfo = {
-    description: request.body.description,
-    isComplete: request.body.isComplete,
-  };
+  var todo = new Todo(request.body.description);
+  todo.updateComplete(request.body.isComplete);
   var updatedTodo = db.get('todos')
                       .find({id: request.params.id})
-                      .assign(updatedTodoInfo)
+                      .assign(todo)
                       .value();
   response.send(updatedTodo);
 });
