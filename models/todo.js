@@ -10,6 +10,15 @@ function Todo(description)
 
 Todo.prototype.updateComplete = function(value)
 {
+  if(value.toLowerCase() === 'true')
+  {
+    this.isComplete = true;
+  }
+  else {
+    {
+      this.isComplete = false;
+    }
+  }
   this.isComplete = value;
 };
 
