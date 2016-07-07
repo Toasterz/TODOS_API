@@ -6,8 +6,6 @@ var uuid = require("uuid");
 var server = express();
 var port = process.env.PORT || 8080;
 var Todo = require('./models/todo.js');
-var testTodo = new Todo('Drone API');
-console.log(testTodo);
 //database initialization
 db.defaults({todos: []})
   .value();
@@ -40,7 +38,7 @@ server.post('/todos', function(request, response)
 
 server.put('/todos/:id', function(request, response)
 {
-  var todo = new Todo(request.body.description);
+  var todo = new Todo(request.body.description, request.params.id);
   todo.updateComplete(request.body.isComplete);
   var updatedTodo = db.get('todos')
                       .find({id: request.params.id})

@@ -4,6 +4,15 @@
       "id": "272ca9b3-ce5c-4e0d-aae7-a9ed96534248",
       "description": "Test_val 2",
       "isComplete": false
+    },
+    {
+      "id": "280d55f9-1fe2-4035-947e-c2d576561761",
+      "isComplete": false
+    },
+    {
+      "id": "16d7a7a3-18ef-4d90-bc41-31ffceaac48a",
+      "description": "Super duper drone API",
+      "isComplete": "True"
     }
   ]
 }
